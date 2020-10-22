@@ -76,6 +76,66 @@ Tests should have zero (or minimal) dependency on anything outside the test.
 - **Nonhermeticity**: Tests that fail if anyone else in the company runs the
   same test at the same time.
 
+# How to write testable source code
+
+## Pure functions
+
+When a function is pure, it does not use anything that is not given as arguments
+to compute (no global state) nor does it modify anything it is given. The pure
+function always just give bake a new copy (no mutation).
+
+## Decoupled design
+
+Before starting to code think about how to break down what to do to have a set
+of simple building blocks that each does one very simple thing.
+
+## Defensive programming
+
+Ensure that a piece of code **works under unforeseen circumstances**, to improve
+comprehension and predictability and to simplify maintenance.
+
+To program defensively, make sure each method as well as class, variable and
+property where applicable:
+
+- Has a clear and single purpose
+- Has a clear name with a clear intent (that matches the implementation)
+- Does not have any unexpected side effects (for example it should not perform
+  operations that is not to be expected)
+- Is short and concise
+- Is testable
+- Validates input
+- Handles exceptions
+- Has a clear contract
+- Has sensible return values
+- Does not have any leaky abstractions (internal details and limitations should
+  be kept internal)
+- Uses comments (with moderation) to explain **why** things are done
+
+## Law of Demeter (LoD)
+
+- Each unit should have only limited knowledge about other units.
+- Each unit should only talk to its friends; don't talk to strangers.
+- Only talk to your immediate friends.
+
+```cpp
+// bad
+this.get_a().get_b().do_something()
+```
+
+## SOLID design principles
+
+- **Single Responsibility Principle (SRP)**: Each software module should only
+  have one reason to change.
+- **Open/Closed Principle (OCP)**: Classes should be open for extension but
+  closed to modifications.
+- **Liskov Substitution Principle (LSP)**: Objects of a superclass shall be
+  replaceable with objects of its subclasses without breaking the application.
+- **Interface Segregation Principle (ISP)**: No client should be forced to
+  depend on methods it does not use.
+- **Dependency Inversion Principle (DIP)**: High-level modules should not depend
+  on low-level modules; both should depend on abstractions. Abstractions should
+  not depend on details. Details should depend upon abstractions.
+
 # Glossary
 
 ## Unit test

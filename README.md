@@ -76,6 +76,58 @@ Tests should have zero (or minimal) dependency on anything outside the test.
 - **Nonhermeticity**: Tests that fail if anyone else in the company runs the
   same test at the same time.
 
+# How to write test cases
+
+Test cases should not focus on individual functions but instead should
+focus on the behavior of a function or class. This is called **Behavior Driven
+Testing**.
+
+## Example
+
+Given a object which describes a cup:
+
+```cpp
+struct Cup {
+  Cup();
+  auto is_empty() -> bool;
+  auto fill() -> bool;
+  auto drink() -> bool;
+}
+```
+
+Writing test cases for the individual functions would look like this:
+
+```cpp
+TEST_CASE("Cup::Cup()") {
+  Cup cup;
+  REQUIRE(cup.is_empty());
+}
+TEST_CASE("Cup::is_empty()") {
+  Cup cup;
+  REQUIRE(cup.is_empty());
+}
+TEST_CASE("Cup::fill()") { ... }
+TEST_CASE("Cup::drink()") { ... }
+```
+
+Without reaching into the Cup class,
+- we can not verify the constructor's postcondition without a correct
+  `is_empty()`
+- we can not verify `is_empty()` without correct constructor postconditions
+
+Writing test cases for the behavior would look like this:
+
+```cpp
+TEST_CASE("A new cup is empty") { ... }
+TEST_CASE("An empty cup can be filled") { ... }
+TEST_CASE("A filled bup is full") { ... }
+TEST_CASE("Drinking from a filled cup empties it") { ... }
+```
+
+The test case names have improved and read like a design specification.
+Furthermore, we are now testing consistency of the interface and not
+correctness of the implementation.
+
 # How to write testable source code
 
 ## Pure functions

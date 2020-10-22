@@ -74,3 +74,31 @@ Example: An in-memory key/value store vs. a NOR flash backed key/value store.
 A metric that measures the amount code that is executed. In testing this metric
 can help to determine which branches of conditional statements have been taken
 and which source code is not tested at all.
+
+# Sources
+
+- https://www.toptal.com/qa/how-to-write-testable-code-and-why-it-matters
+- https://hackernoon.com/how-to-refactor-unwieldy-untestable-code-4a73d75cb80a
+- https://www.methodsandtools.com/archive/archive.php?id=103
+- https://medium.com/feedzaitech/writing-testable-code-b3201d4538eb
+- https://codeaddiction.net/articles/53/writing-testable-code
+- https://codeaddiction.net/articles/27/5-practices-that-will-make-your-code-better
+- https://en.wikipedia.org/wiki/Code_coverage
+- https://www.bfilipek.com/2016/01/micro-benchmarking-libraries-for-c.html
+- https://interrupt.memfault.com/blog/unit-testing-basics
+- https://blog.trailofbits.com/2019/11/11/test-case-reduction/
+- https://martinfowler.com/testing/
+- https://www.softwaretestinghelp.com/black-box-testing/
+- https://www.softwaretestinghelp.com/white-box-testing-techniques-with-example/
+- https://www.softwaretestinghelp.com/what-is-integration-testing/
+- https://alysivji.github.io/testing-101-introduction-to-testing.html
+- https://en.wikipedia.org/wiki/Fuzzing
+- https://www.guru99.com/mutation-testing.html
+- https://en.wikipedia.org/wiki/Assertion_(software_development)
+- https://en.wikipedia.org/wiki/Mock_object
+- https://blog.pragmatists.com/test-doubles-fakes-mocks-and-stubs-1a7491dfa3da
+- [Modern C++ Testing with Catch2](https://www.youtube.com/watch?v=Ob5_XZrFQH0)
+- [Lessons in Sustainability...](https://www.youtube.com/watch?v=zW-i9eVGU_k)
+- [All Your Tests are Terrible...](https://www.youtube.com/watch?v=u5senBJUkPc)
+- [Principles of Unit Testing With C++](https://www.youtube.com/watch?v=oOcuJdJJ33g)
+- [Structure and Interpretation of Test Cases](https://www.youtube.com/watch?v=tWn8RA_DEic)

@@ -134,7 +134,7 @@ correctness of the implementation.
 
 When a function is pure, it does not use anything that is not given as arguments
 to compute (no global state) nor does it modify anything it is given. The pure
-function always just give bake a new copy (no mutation).
+function always just gives back a new copy (no mutation).
 
 ## Decoupled design
 

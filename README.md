@@ -136,6 +136,84 @@ this.get_a().get_b().do_something()
   on low-level modules; both should depend on abstractions. Abstractions should
   not depend on details. Details should depend upon abstractions.
 
+# Anti-pattern to testable source code
+
+- Adding too many dependencies (create big object graphs)
+- Hiding dependencies (for example within constructor, private/static methods)
+- Making object hard to initialize
+- Creating many execution paths from a single point
+- Using train wrecks (trying to use/access a method/property by chaining many
+  other objects)
+- Using too many arguments for a single method
+- Repeating source code logic
+- Over-designing
+- Functions with side effects
+  (https://en.wikipedia.org/wiki/Side_effect_(computer_science))
+
+## Non-Deterministic Factors
+
+```cpp
+fn time_of_day() -> string {
+    time = date_time.now();
+    if (time.hour() >= 0 && time.hour() < 6) {
+        return "Night";
+    }
+
+    if (time.hour() >= 6 && time.hour() < 12) {
+        return "Morning";
+    }
+
+    if (time.hour() >= 12 && time.hour() < 18) {
+        return "Afternoon";
+    }
+
+    return "Evening";
+}
+```
+
+It is not possible to write a proper state-based unit test for this method.
+`date_time.now()` is, essentially, a hidden input. The value will probably
+change during program execution or between test runs. 
+
+This method suffers from several issues:
+
+- **It is tightly coupled to the concrete data source.** It is not possible to
+  reuse this method for processing date and time retrieved from other sources,
+  or passed as an argument.
+- **It violates the 'Single Responsibility Principle' (SRP).** The method has
+  multiple responsibilities; it consumes the information and also processes it.
+- **It lies about the information required to get its job done.** Developer must
+  read every line of the actual source code to understand what hidden inputs are
+  used and where they come from. The signature alone is not enough understand
+  the behavior.
+- **It is hard to predict and maintain.** The behavior of a method that depends
+  on a mutable global state cannot be predicted by merely reading the source
+  code.
+
+Fixing the API:
+
+```cpp
+fn time_of_day(date_time time) -> string {
+    if (time.hour() >= 0 && time.hour() < 6) {
+        return "Night";
+    }
+
+    if (time.hour() >= 6 && time.hour() < 12) {
+        return "Morning";
+    }
+
+    if (time.hour() >= 12 && time.hour() < 18) {
+        return "Afternoon";
+    }
+
+    return "Evening";
+}
+```
+
+Notice that this simple refactor solved all the API issues (tight coupling, SRP
+violation, unclear and hard to understand API) and the method is now
+deterministic (its return value fully depends on the input).
+
 # Glossary
 
 ## Unit test

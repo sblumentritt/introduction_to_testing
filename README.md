@@ -10,6 +10,72 @@
 
 [[_TOC_]]
 
+# Properties of good tests
+
+Good tests have five properties which should be the goal for any written test:
+
+1. **Correctness**
+2. **Readability**
+3. **Completeness**
+4. **Demonstrability**
+5. **Resilience**
+
+## Correctness
+
+Tests must verify the requirements of the system are met and the test should
+only test the wanted parts.
+
+**Do not write**:
+- Tests that depend upon known bugs
+- Tests that do not actually execute real scenarios
+
+## Readability
+
+Tests should be correct by inspection and should be obvious to the future reader
+(including yourself!). A test should be like a novel: setup, action, conclusion,
+and it should all make sense.
+
+**Do not write**:
+- Too much boilerplate and other distraction
+- Not enough context in the test
+- Gratuitous use of advanced test framework features
+
+## Completeness
+
+Tests should be written for common inputs, corner cases and outlandish cases.
+
+**Do not write**:
+- Tests for APIs that are not yours
+- Tests only for the easy cases
+
+## Demonstrability
+
+Tests should serve as a demonstration of how the API works. Tests should act as
+documentation and be *the* place to look for examples of good code usage.
+
+- Test in realistic situations
+- Test only using the API, just like the users
+- If it is hard to test, it is probably hard to use.
+
+**Do not write tests with**:
+- Reliance on private methods and friend / test-only methods
+- Bad usage in unit tests, suggesting a bad API
+
+## Resilience
+
+Tests should have zero (or minimal) dependency on anything outside the test.
+
+**Do not write tests that fail in all sorts of surprising ways**:
+
+- **Flaky tests**: Tests that can be re-run with the same build in the same
+  state and flip from passing to failing (or timing out).
+- **Brittle tests**: Tests that can fail for changes unrelated to the code under
+  test.
+- **Ordering**: Tests that fail if they are not run all together or in a
+  particular order.
+- **Nonhermeticity**: Tests that fail if anyone else in the company runs the
+  same test at the same time.
+
 # Glossary
 
 ## Unit test

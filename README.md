@@ -1,0 +1,11 @@
+> Software testing is an investigation conducted to provide stakeholders with
+> information about the quality of the software product or service under test.
+> Software testing can also provide an objective, independent view of the
+> software to allow the business to appreciate and understand the risks of
+> software implementation. Test techniques include the process of executing a
+> program or application with the intent of finding software bugs (errors or
+> other defects), and verifying that the software product is fit for use.
+>
+> -- [Software testing. Wikipedia (2020, October 22)](https://en.wikipedia.org/wiki/Software_testing)
+
+[[_TOC_]]

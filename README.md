@@ -8,7 +8,37 @@
 >
 > -- [Software testing. Wikipedia (2020, October 22)](https://en.wikipedia.org/wiki/Software_testing)
 
-[[_TOC_]]
+# Table of Contents
+
+* [Properties of good tests](#properties-of-good-tests)
+  * [Correctness](#correctness)
+  * [Readability](#readability)
+  * [Completeness](#completeness)
+  * [Demonstrability](#demonstrability)
+  * [Resilience](#resilience)
+* [How to write test cases](#how-to-write-test-cases)
+  * [Example](#example)
+* [How to write testable source code](#how-to-write-testable-source-code)
+  * [Pure functions](#pure-functions)
+  * [Decoupled design](#decoupled-design)
+  * [Defensive programming](#defensive-programming)
+  * [Law of Demeter (LoD)](#law-of-demeter-lod)
+  * [SOLID design principles](#solid-design-principles)
+* [Anti-pattern to testable source code](#anti-pattern-to-testable-source-code)
+  * [Non-Deterministic Factors](#non-deterministic-factors)
+* [Glossary](#glossary)
+  * [Unit test](#unit-test)
+  * [Integration test](#integration-test)
+  * [Black box testing](#black-box-testing)
+  * [White box testing](#white-box-testing)
+  * [Fuzz testing](#fuzz-testing)
+  * [Mutation testing](#mutation-testing)
+  * [Assertion](#assertion)
+  * [Mock](#mock)
+  * [Stub](#stub)
+  * [Fake](#fake)
+  * [Coverage](#coverage)
+* [Sources](#sources)
 
 # Properties of good tests
 
